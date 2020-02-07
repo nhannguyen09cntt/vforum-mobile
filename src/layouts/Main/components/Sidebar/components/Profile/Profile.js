@@ -27,9 +27,8 @@ const Profile = props => {
   const classes = useStyles();
 
   const user = {
-    name: 'Shen Zhi',
-    avatar: '/images/avatars/avatar_11.png',
-    bio: 'Brain Director'
+    name: 'Guest',
+    avatar: '/images/avatars/guest.gif'
   };
 
   return (
@@ -42,7 +41,7 @@ const Profile = props => {
         className={classes.avatar}
         component={RouterLink}
         src={user.avatar}
-        to="/settings"
+        to="/login"
       />
       <Typography
         className={classes.name}
