@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 import { Divider, Drawer } from '@material-ui/core';
-import DashboardIcon from '@material-ui/icons/Dashboard';
+import HomeIcon from '@material-ui/icons/Home';
 import SearchIcon from '@material-ui/icons/Search';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import SettingsIcon from '@material-ui/icons/Settings';
@@ -41,17 +41,17 @@ const Sidebar = props => {
 
   const pages = [
     {
-      title: 'Home',
+      title: 'Trang chủ',
       href: '/',
-      icon: <DashboardIcon />
+      icon: <HomeIcon />
     },
     {
-      title: 'Search',
+      title: 'Tìm kiếm',
       href: '/search',
       icon: <SearchIcon />
     },
     {
-      title: 'Account',
+      title: 'Tài khoản',
       href: '/account',
       icon: <AccountBoxIcon />
     },

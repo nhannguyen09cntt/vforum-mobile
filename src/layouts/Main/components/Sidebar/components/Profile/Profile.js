@@ -28,7 +28,8 @@ const Profile = props => {
 
   const user = {
     name: 'Guest',
-    avatar: '/images/avatars/guest.gif'
+    avatar: '/images/avatars/guest.png',
+    bio: 'Only view'
   };
 
   return (

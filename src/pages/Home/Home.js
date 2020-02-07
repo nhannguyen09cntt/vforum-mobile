@@ -1,54 +1,60 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/styles';
-import { Grid, Typography } from '@material-ui/core';
+import { IconButton, Grid, Typography } from '@material-ui/core';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import { TopicCard } from '../../components';
+import mockData from '../../data/topics';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    padding: theme.spacing(4)
+    padding: theme.spacing(3)
   },
   content: {
-    paddingTop: 150,
-    textAlign: 'center'
+    marginTop: theme.spacing(2)
   },
-  image: {
-    marginTop: 50,
-    display: 'inline-block',
-    maxWidth: '100%',
-    width: 560
+  pagination: {
+    marginTop: theme.spacing(3),
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-end'
   }
 }));
 
 const Home = () => {
   const classes = useStyles();
 
+  const [products] = useState(mockData);
+
   return (
     <div className={classes.root}>
-      <Grid
-        container
-        justify="center"
-        spacing={4}
-      >
+      <div className={classes.content}>
         <Grid
-          item
-          lg={6}
-          xs={12}
+          container
+          spacing={3}
         >
-          <div className={classes.content}>
-            <Typography variant="h1">
-              404: The page you are looking for isn’t here
-            </Typography>
-            <Typography variant="subtitle2">
-              You either tried some shady route or you came here by mistake.
-              Whichever it is, try using the navigation
-            </Typography>
-            <img
-              alt="Under development"
-              className={classes.image}
-              src="/images/undraw_page_not_found_su7k.svg"
-            />
-          </div>
+          {products.map(product => (
+            <Grid
+              item
+              key={product.id}
+              lg={4}
+              md={6}
+              xs={12}
+            >
+              <TopicCard product={product} />
+            </Grid>
+          ))}
         </Grid>
-      </Grid>
+      </div>
+      <div className={classes.pagination}>
+        <Typography variant="caption">1-6 of 20</Typography>
+        <IconButton>
+          <ChevronLeftIcon />
+        </IconButton>
+        <IconButton>
+          <ChevronRightIcon />
+        </IconButton>
+      </div>
     </div>
   );
 };
