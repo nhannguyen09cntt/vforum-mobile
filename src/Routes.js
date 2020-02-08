@@ -6,7 +6,7 @@ import { Main as MainLayout } from './layouts';
 
 import {
   Home as HomePage
-} from './pages';
+} from './views';
 
 const Routes = () => {
   return (

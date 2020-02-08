@@ -8,10 +8,11 @@ import {
   CardActions,
   Typography,
   Grid,
-  Divider
+  Divider,
+  Box
 } from '@material-ui/core';
-import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import VisibilityIcon from '@material-ui/icons/Visibility';
+import FolderIcon from '@material-ui/icons/Folder';
 
 const useStyles = makeStyles(theme => ({
   root: {},
@@ -36,6 +37,17 @@ const useStyles = makeStyles(theme => ({
   statsIcon: {
     color: theme.palette.icon,
     marginRight: theme.spacing(1)
+  },
+  userContainer: {
+    height: '40px',
+    width: '40px',
+    margin: '0 auto',
+    border: `1px solid ${theme.palette.divider}`,
+    borderRadius: '50%',
+    overflow: 'hidden',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
   }
 }));
 
@@ -49,6 +61,45 @@ const TopicCard = props => {
       {...rest}
       className={clsx(classes.root, className)}
     >
+      <CardActions>
+        <Grid
+          container
+          justify="space-between"
+        >
+          <Grid
+            className={classes.statsItem}
+            item
+          >
+            <div className={classes.userContainer}>
+              <img
+                alt="User"
+                className={classes.image}
+                src={product.authorAvatar}
+              />
+            </div>
+            <Box ml={1} />
+            <Typography
+              display="inline"
+              variant="body2"
+            >
+              {product.author}
+            </Typography>
+          </Grid>
+          <Grid
+            className={classes.statsItem}
+            item
+          >
+            {/* <AccessTimeIcon className={classes.statsIcon} /> */}
+            <Typography
+              display="inline"
+              variant="body2"
+            >
+              2hr ago
+            </Typography>
+          </Grid>
+        </Grid>
+      </CardActions>
+      <Divider />
       <CardContent>
         <div className={classes.imageContainer}>
           <img
@@ -57,18 +108,13 @@ const TopicCard = props => {
             src={product.imageUrl}
           />
         </div>
+        <Box mb={1} />
         <Typography
-          align="center"
+          align="left"
           gutterBottom
-          variant="h4"
+          variant="h6"
         >
           {product.title}
-        </Typography>
-        <Typography
-          align="center"
-          variant="body1"
-        >
-          {product.description}
         </Typography>
       </CardContent>
       <Divider />
@@ -81,12 +127,12 @@ const TopicCard = props => {
             className={classes.statsItem}
             item
           >
-            <AccessTimeIcon className={classes.statsIcon} />
+            <FolderIcon className={classes.statsIcon} />
             <Typography
               display="inline"
               variant="body2"
             >
-              Updated 2hr ago
+              {product.category}
             </Typography>
           </Grid>
           <Grid
